@@ -30,9 +30,16 @@ full balance takes the size of the deposit away from the user, and "send first, 
 `totalWrappedNexumMinted > totalNexumDeposited`; the difference is all yield harvested so far.
 `totalAssets()` counts wNXM (user deposits plus rewards streamed so far), not the raw token balance.
 
-## Deploy
+## Sepolia deployment (verified)
 
-Token name and symbol are set in the constructors, so they cannot be changed on an existing deployment.
+| Contract | Address |
+|---|---|
+| NXM | [`0x0abD0FD769b0A9D8f73186290Df487b5b5FF8A0D`](https://sepolia.etherscan.io/address/0x0abd0fd769b0a9d8f73186290df487b5b5ff8a0d) |
+| wNXM | [`0xbdb27b6c65E0A2C05bF531415cABd74f5FD32C95`](https://sepolia.etherscan.io/address/0xbdb27b6c65e0a2c05bf531415cabd74f5fd32c95) |
+| Staking | [`0xc8691833E90F9c5001aE9217DfE5C4Ad41B3738f`](https://sepolia.etherscan.io/address/0xc8691833e90f9c5001ae9217dfe5c4ad41b3738f) |
+| AutocompoundingVault | [`0x23b4CA9C3fd369C1B90307e3bA05d2C096027104`](https://sepolia.etherscan.io/address/0x23b4ca9c3fd369c1b90307e3ba05d2c096027104) |
+| Deposit | [`0xFc01eB195A18f15B0BD293e7B9ed916c24c68FB5`](https://sepolia.etherscan.io/address/0xfc01eb195a18f15b0bd293e7b9ed916c24c68fb5) |
+
 Deployment order is fixed by constructor dependencies: NXM → wNXM → Staking → Vault → Deposit, then
 `vault.setDepositContract(deposit)` and both wNXM roles granted to Deposit. See `script/Deploy.s.sol`.
 
