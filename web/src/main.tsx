@@ -1,0 +1,33 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { WagmiProvider } from 'wagmi'
+import { sepolia } from 'wagmi/chains'
+
+import App from './App.tsx'
+import { config } from './config.ts'
+import '@rainbow-me/rainbowkit/styles.css'
+import './index.css'
+
+const queryClient = new QueryClient()
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider
+          initialChain={sepolia}
+          theme={darkTheme({
+            accentColor: '#d6ff4a',
+            accentColorForeground: '#14180f',
+            borderRadius: 'medium',
+            overlayBlur: 'small',
+          })}
+        >
+          <App />
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  </StrictMode>,
+)

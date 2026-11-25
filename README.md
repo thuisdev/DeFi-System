@@ -49,6 +49,18 @@ forge script script/Deploy.s.sol --rpc-url sepolia --account <keystore> --sender
   --broadcast --verify --skip-simulation --slow
 ```
 
+## App
+
+One Sepolia page in `web/`: connect a wallet, see NXM / wNXM / aNXM, deposit into either receipt, and withdraw back to NXM. RainbowKit opens on Sepolia and asks the wallet to switch if it is on another network. The NXM owner also gets a button to mint test tokens.
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+Optional: copy `web/.env.example` to `web/.env` and set `VITE_WALLETCONNECT_PROJECT_ID` if you want the WalletConnect QR code. Injected wallets work without it.
+
 ## What I Learned
 
 **The Synthetix accumulator.** Paying many stakers per second is impossible if you update every user. Instead there
