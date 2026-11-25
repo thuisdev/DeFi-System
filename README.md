@@ -51,7 +51,9 @@ forge script script/Deploy.s.sol --rpc-url sepolia --account <keystore> --sender
 
 ## App
 
-One Sepolia page in `web/`: connect a wallet, see NXM / wNXM / aNXM, deposit into either receipt, and withdraw back to NXM. RainbowKit opens on Sepolia and asks the wallet to switch if it is on another network. The NXM owner also gets a button to mint test tokens.
+`web/` is one Sepolia page: connect a wallet, read NXM / wNXM / aNXM, deposit into either receipt, and withdraw back to NXM. RainbowKit opens on Sepolia and asks the wallet to switch if it is on another network.
+
+Minting NXM is restricted to the token owner. Any wallet can connect and read balances. A wallet with no NXM cannot deposit. The owner sees **Mint 1,000 test NXM** on the page and can transfer tokens to someone who wants to try the flow.
 
 ```bash
 cd web
@@ -59,7 +61,9 @@ npm install
 npm run dev
 ```
 
-Optional: copy `web/.env.example` to `web/.env` and set `VITE_WALLETCONNECT_PROJECT_ID` if you want the WalletConnect QR code. Injected wallets work without it.
+The WalletConnect QR code needs `VITE_WALLETCONNECT_PROJECT_ID` in `web/.env` (see `web/.env.example`). MetaMask and other injected wallets work without it.
+
+For a public URL, deploy the `web/` directory on Vercel and set that variable there. The project root on Vercel is `web`, not the repository root.
 
 ## What I Learned
 
